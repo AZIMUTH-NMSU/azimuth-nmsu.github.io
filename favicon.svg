@@ -1,28 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <clipPath id="disc"><circle cx="32" cy="32" r="22.5"/></clipPath>
-  </defs>
-  <g fill="#cd8030">
-    <rect x="0.5" y="27" width="9" height="2" rx="1"/>
-    <rect x="0.5" y="31" width="9" height="2" rx="1"/>
-    <rect x="0.5" y="35" width="9" height="2" rx="1"/>
-    <rect x="54.5" y="27" width="9" height="2" rx="1"/>
-    <rect x="54.5" y="31" width="9" height="2" rx="1"/>
-    <rect x="54.5" y="35" width="9" height="2" rx="1"/>
-    <rect x="27" y="0.5" width="2" height="9" rx="1"/>
-    <rect x="35" y="0.5" width="2" height="9" rx="1"/>
-    <rect x="27" y="54.5" width="2" height="9" rx="1"/>
-    <rect x="35" y="54.5" width="2" height="9" rx="1"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" role="img" aria-labelledby="title description">
+  <title id="title">AZIMUTH symbol</title>
+  <desc id="description">An A inside an orbital compass ring, with a sun with rays and a satellite, as a standalone mark.</desc>
+  <rect width="360" height="360" fill="#ffffff"/>
+  <g transform="translate(9.4 3)">
+
+    <!-- An orbital path crosses a compass circle: Sun to atmosphere to orbit. -->
+    <circle cx="176" cy="177" r="110" fill="none" stroke="#11283d" stroke-width="8"/>
+    <path d="M176 44v25M176 285v25M43 177h25M284 177h25" stroke="#11283d" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="176" cy="177" rx="154" ry="62" transform="rotate(-28 176 177)" fill="none" stroke="#1680a0" stroke-width="7"/>
+
+    <!-- The letter A carries the directional idea of azimuth. -->
+    <path d="M120 232 176 105 232 232" fill="none" stroke="#11283d" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter"/>
+    <path d="M146 195h60" stroke="#11283d" stroke-width="13" stroke-linecap="square"/>
+    <path d="M176 97 165 119h22Z" fill="#f0a245"/>
+
+    <!-- Solar source and orbital spacecraft are simple at business-card size. -->
+    <g stroke="#f0a245" stroke-width="5" stroke-linecap="round">
+      <path d="M59 207v-9M59 271v9M27 239h-9M91 239h9M36 216l-7-7M82 262l7 7M36 262l-7 7M82 216l7-7"/>
+    </g>
+    <circle cx="59" cy="239" r="18" fill="#f0a245" stroke="#ffffff" stroke-width="4"/>
+    <g transform="translate(291 107) rotate(-28)">
+      <rect x="-12" y="-9" width="24" height="18" rx="2" fill="#11283d" stroke="#ffffff" stroke-width="3"/>
+      <rect x="-34" y="-7" width="18" height="14" rx="1" fill="#1680a0" stroke="#ffffff" stroke-width="2"/>
+      <rect x="16" y="-7" width="18" height="14" rx="1" fill="#1680a0" stroke="#ffffff" stroke-width="2"/>
+    </g>
+
   </g>
-  <circle cx="32" cy="32" r="25.5" fill="#0b2349"/>
-  <circle cx="32" cy="32" r="24" fill="#fff"/>
-  <circle cx="32" cy="32" r="22.5" fill="#0b2349"/>
-  <g clip-path="url(#disc)">
-    <circle cx="30" cy="35" r="9.5" fill="none" stroke="#cd8030" stroke-width="2.4"/>
-    <path d="M8 42Q17 37 26 41T43 41T58 38V58H8Z" fill="#2f8fc4"/>
-    <path d="M8 46.5Q18 42 27 45.5T44 45T58 43V58H8Z" fill="#6cc3e3"/>
-    <path d="M8 51Q19 48 29 50.5T58 49V58H8Z" fill="#2f8fc4"/>
-  </g>
-  <path d="M32 1 34.5 15H29.5ZM32 63 34.5 49H29.5Z" fill="#0b2349" stroke="#fff" stroke-width="1" stroke-linejoin="round"/>
-  <path d="M21 16 22.1 19.4 25.5 20.5 22.1 21.6 21 25 19.9 21.6 16.5 20.5 19.9 19.4Z" fill="#fff"/>
 </svg>
