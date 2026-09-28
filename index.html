@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AZIMUTH Lab</title>
+
+  <style>
+    :root {
+      --ink: #11283d;
+      --blue: #136e91;
+      --light: #e8f6f9;
+      --line: #c7dce3;
+      --muted: #526879;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #fff;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .controls {
+      max-width: 816px;
+      margin: 16px auto;
+      text-align: right;
+      padding: 0 20px;
+    }
+
+    button {
+      padding: 11px 18px;
+      border: 0;
+      border-radius: 6px;
+      background: var(--ink);
+      color: white;
+      font: 600 14px Arial, sans-serif;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--blue);
+    }
+
+    .page {
+      width: 100%;
+      max-width: 816px;
+      margin: 0 auto;
+      padding: 40px 48px;
+      background: white;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 17px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mark {
+      width: 43px;
+      height: 43px;
+      flex: none;
+    }
+
+    .brand-name {
+      font-size: 27px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+    }
+
+    .brand-sub {
+      margin-top: 5px;
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.26em;
+    }
+
+    .tagline {
+      text-align: right;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1.5;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 20px 0 10px;
+      font-size: 33px;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    .intro {
+      margin: 0 0 18px;
+      color: #385467;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 19px;
+      letter-spacing: -0.02em;
+    }
+
+    .expertise-row {
+      display: grid;
+      grid-template-columns: 172px 1fr;
+      gap: 17px;
+      padding: 11px 0;
+      border-top: 1px solid var(--line);
+      break-inside: avoid;
+    }
+
+    .number {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--blue);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+
+    .expertise-row p {
+      margin: 0;
+      color: #30495b;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .training {
+      margin-top: 4px;
+      padding: 10px 12px;
+      border-radius: 5px;
+      background: var(--light);
+      color: #30495b;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .training strong {
+      color: var(--blue);
+    }
+
+    .team {
+      margin-top: 17px;
+      break-inside: avoid;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px 20px;
+    }
+
+    .team-grid strong {
+      display: block;
+      font-size: 12px;
+    }
+
+    .team-grid span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 10.5px;
+      line-height: 1.35;
+    }
+
+    .collaborators {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.4;
+    }
+
+    .funding {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      align-items: center;
+      gap: 19px;
+      margin: 16px 0;
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      break-inside: avoid;
+    }
+
+    .funding-amount {
+      color: var(--blue);
+      font-size: 39px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .funding-label {
+      margin-top: 7px;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .funding p {
+      margin: 0 0 7px;
+      color: #30495b;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .funders {
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.65;
+    }
+
+    .supporting {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 9.5px;
+      line-height: 1.35;
+    }
+
+    footer {
+      break-inside: avoid;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      padding-top: 14px;
+      border-top: 2px solid var(--ink);
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .footer-grid p {
+      margin: 7px 0 0;
+      color: #344f61;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .contact {
+      padding-left: 20px;
+      border-left: 1px solid var(--line);
+    }
+
+    a {
+      color: #075d84;
+      font-weight: 700;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .note {
+      margin-top: 12px;
+      color: #687d89;
+      font-size: 9px;
+      line-height: 1.3;
+    }
+
+    @media screen and (max-width: 600px) {
+      .page {
+        padding: 24px;
+      }
+
+      h1 {
+        font-size: 29px;
+      }
+
+      .tagline {
+        display: none;
+      }
+
+      .expertise-row,
+      .team-grid,
+      .funding,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .expertise-row {
+        gap: 8px;
+      }
+
+      .contact {
+        padding-left: 0;
+        border-left: 0;
+      }
+    }
+
+    @page {
+      size: letter;
+      margin: 0.4in;
+    }
+
+    @media print {
+      body {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .controls {
+        display: none;
+      }
+
+      .page {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        margin-top: 16px;
+      }
+
+      .team {
+        margin-top: 13px;
+      }
+
+      .funding {
+        margin: 12px 0;
+        padding: 10px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="controls">
+    <button type="button" onclick="window.print()">
+      Print / Save as PDF
+    </button>
+  </div>
+
+  <main class="page">
+    <header>
+      <div class="brand">
+        <svg
+          class="mark"
+          viewBox="0 0 48 48"
+          role="img"
+          aria-label="AZIMUTH compass symbol"
+        >
+          <circle
+            cx="24" cy="24" r="21"
+            fill="none"
+            stroke="#136e91"
+            stroke-width="2"
+          />
+          <path
+            d="M24 5 28 20 43 24 28 28 24 43 20 28 5 24 20 20Z"
+            fill="none"
+            stroke="#11283d"
+            stroke-width="1.7"
+          />
+          <path
+            d="M24 7 28 20 24 24 20 20Z"
+            fill="#f0a245"
+          />
+          <circle cx="24" cy="24" r="3" fill="#11283d"/>
+        </svg>
+
+        <div>
+          <div class="brand-name">AZIMUTH</div>
+          <div class="brand-sub">LAB</div>
+        </div>
+      </div>
+
+      <div class="tagline">
+        Solar → Space → Satellite<br>
+        Built in New Mexico
+      </div>
+    </header>
+
+    <h1>
+      Space weather intelligence<br>
+      for space domain awareness.
+    </h1>
+
+    <p class="intro">
+      From solar activity to satellite behavior, AZIMUTH Lab combines
+      observations, physical modeling, and AI across three connected
+      areas of expertise.
+    </p>
+
+    <section aria-labelledby="expertise-heading">
+      <h2 id="expertise-heading">AZIMUTH expertise</h2>
+
+      <article class="expertise-row">
+        <div>
+          <span class="number">01 / AZIMUTH</span>
+          <h3>Space weather</h3>
+        </div>
+        <p>
+          Solar observations, flare precursors, and AI-enabled nowcasting.
+          Solar-cycle and geomagnetic forecasting, including 20–30 day
+          storm-warning research. Applications to GNSS, radio
+          communications, and infrastructure resilience.
+        </p>
+      </article>
+
+      <article class="expertise-row">
+        <div>
+          <span class="number">02 / AZIMUTH</span>
+          <h3>Space domain awareness</h3>
+        </div>
+        <p>
+          Satellite orbit prediction and LEO/VLEO behavior during
+          space-weather events. TLE population analysis, ballistic
+          coefficients, atmospheric drag, and orbital decay—connecting
+          environmental conditions to mission planning.
+        </p>
+      </article>
+
+      <article class="expertise-row">
+        <div>
+          <span class="number">03 / AZIMUTH</span>
+          <h3>Atmospheric science</h3>
+        </div>
+        <p>
+          Thermospheric density and storm-time atmospheric response
+          using Swarm observations and satellite data. Atmospheric
+          gravity waves, eclipse and balloon studies, and coupling
+          across the Sun–Earth system.
+        </p>
+      </article>
+
+      <div class="training">
+        <strong>AI, education &amp; workforce development</strong>
+        · SOLAR-AI research, interdisciplinary student training,
+        short courses in space weather and space domain awareness,
+        and NASA SciAct heliophysics learning for Grades 4–8.
+      </div>
+    </section>
+
+    <section class="team" aria-labelledby="team-heading">
+      <h2 id="team-heading">Our team &amp; collaborators</h2>
+
+      <div class="team-grid">
+        <div>
+          <strong>Dr. Juie Shetye</strong>
+          <span>
+            Scientific direction · Solar physics &amp; space weather
+          </span>
+        </div>
+
+        <div>
+          <strong>Dr. Lipi Mukherjee</strong>
+          <span>
+            Solar-wind coupling · Thermosphere &amp; satellite drag
+          </span>
+        </div>
+
+        <div>
+          <strong>Dr. Huiping Cao</strong>
+          <span>
+            AI/ML · Data mining &amp; scalable forecasting
+          </span>
+        </div>
+
+        <div>
+          <strong>Dr. Suparna Chatterjee</strong>
+          <span>
+            STEM education · Curriculum development · NASA SciAct PI
+          </span>
+        </div>
+
+        <div>
+          <strong>Dr. Stylianos Vasileiou</strong>
+          <span>
+            Interpretable AI · Physics-informed models
+          </span>
+        </div>
+      </div>
+
+      <p class="collaborators">
+        <strong>Research collaborator:</strong>
+        Dr. Damian Christian · Solar-flare research.
+      </p>
+    </section>
+
+    <section class="funding" aria-label="Research and education funding">
+      <div>
+        <div class="funding-amount">$3.0M</div>
+        <div class="funding-label">
+          Research &amp; education<br>
+          funding secured
+        </div>
+      </div>
+
+      <div>
+        <p>Research and education support behind AZIMUTH Lab.</p>
+
+        <div class="funders">
+          NSF CAREER · NSF SHINE · NASA SciAct<br>
+          NMSGC / NM NASA EPSCoR RID Seed Fund<br>
+          NASA FINESST · NASA SMD Bridge / MOSAICS
+        </div>
+
+        <div class="supporting">
+          Additional portfolio support: NSF FDSS (Co-PI),
+          National Eclipse Ballooning Project,
+          and NMSGC student research.
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <div class="eyebrow">Let’s collaborate</div>
+          <p>
+            Connecting with satellite operators, mission planners,
+            atmospheric scientists, GNSS and communications users,
+            and research and education partners.
+          </p>
+        </div>
+
+        <div class="contact">
+          <div class="eyebrow">Connect</div>
+          <p>
+            <strong>Dr. Juie Shetye</strong><br>
+            AZIMUTH Lab · New Mexico<br>
+            <a href="mailto:jshetye@nmsu.edu?subject=AZIMUTH%20Lab">
+              jshetye@nmsu.edu
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="note">
+        Research capabilities and operational tools are under development.
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
